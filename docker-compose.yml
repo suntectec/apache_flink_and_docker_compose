@@ -14,7 +14,7 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
 
   mariadb:
-    image: mariadb:10.6.14
+    image: mariadb:latest
     container_name: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
@@ -31,7 +31,7 @@ services:
       - "6379:6379"
 
   jobmanager:
-    image: flink:1.17.1
+    image: flink:1.20
     container_name: jobmanager
     environment:
       - |
@@ -44,13 +44,14 @@ services:
       - "8081:8081"
     command: jobmanager
     volumes:
-      - ./jars/flink-sql-connector-mysql-cdc-2.4.1.jar:/opt/flink/lib/flink-sql-connector-mysql-cdc-2.4.1.jar
-      - ./jars/flink-connector-jdbc-3.1.0-1.17.jar:/opt/flink/lib/flink-connector-jdbc-3.1.0-1.17.jar
-      - ./jars/flink-connector-redis-1.3.0-jar-with-dependencies.jar:/opt/flink/lib/flink-connector-redis-1.3.0-jar-with-dependencies.jar
+      - ./jars/flink-sql-connector-mysql-cdc-3.4.0.jar:/opt/flink/lib/flink-sql-connector-mysql-cdc-3.4.0.jar
+      - ./jars/flink-connector-jdbc-3.3.0-1.20.jar:/opt/flink/lib/flink-connector-jdbc-3.3.0-1.20.jar
+      - ./jars/flink-connector-redis-1.4.3-jar-with-dependencies.jar:/opt/flink/lib/flink-connector-redis-1.4.3-jar-with-dependencies.jar
       - ./jobs/job.sql:/opt/flink/job.sql
+      - ./jars/mysql-connector-j-9.3.0.jar:/opt/flink/lib/mysql-connector-j-9.3.0.jar
 
   taskmanager:
-    image: flink:1.17.1
+    image: flink:1.20
     environment:
       - |
         FLINK_PROPERTIES=
@@ -62,9 +63,10 @@ services:
       - jobmanager
     command: taskmanager
     volumes:
-      - ./jars/flink-sql-connector-mysql-cdc-2.4.1.jar:/opt/flink/lib/flink-sql-connector-mysql-cdc-2.4.1.jar
-      - ./jars/flink-connector-jdbc-3.1.0-1.17.jar:/opt/flink/lib/flink-connector-jdbc-3.1.0-1.17.jar
-      - ./jars/flink-connector-redis-1.3.0-jar-with-dependencies.jar:/opt/flink/lib/flink-connector-redis-1.3.0-jar-with-dependencies.jar
+      - ./jars/flink-sql-connector-mysql-cdc-3.4.0.jar:/opt/flink/lib/flink-sql-connector-mysql-cdc-3.4.0.jar
+      - ./jars/flink-connector-jdbc-3.3.0-1.20.jar:/opt/flink/lib/flink-connector-jdbc-3.3.0-1.20.jar
+      - ./jars/flink-connector-redis-1.4.3-jar-with-dependencies.jar:/opt/flink/lib/flink-connector-redis-1.4.3-jar-with-dependencies.jar
+      - ./jars/mysql-connector-j-9.3.0.jar:/opt/flink/lib/mysql-connector-j-9.3.0.jar
 
     deploy:
           replicas: 2
