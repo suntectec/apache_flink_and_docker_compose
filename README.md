@@ -18,10 +18,10 @@ docker ps
 You should see something like the following showing a jobmanager and 2 task managers.
 
 ```
-CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                                 NAMES
-eb87408560be   flink:1.17.1      "/docker-entrypoint.…"   35 minutes ago   Up 35 minutes   6123/tcp, 8081/tcp                                    apache_flink_and_docker_compose-taskmanager-2
-565fd52d250a   flink:1.17.1      "/docker-entrypoint.…"   35 minutes ago   Up 35 minutes   6123/tcp, 8081/tcp                                    apache_flink_and_docker_compose-taskmanager-1
-0b3e3eaa5c06   flink:1.17.1      "/docker-entrypoint.…"   35 minutes ago   Up 35 minutes   6123/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   jobmanager
+CONTAINER ID   IMAGE                        COMMAND                  CREATED        STATUS                  PORTS                                                      NAMES
+8f178a106918   flink:1.20                   "/docker-entrypoint.…"   16 hours ago   Up 16 hours             6123/tcp, 8081/tcp                                         apache_flink_and_docker_compose-taskmanager-1
+1cb1aeae0261   flink:1.20                   "/docker-entrypoint.…"   16 hours ago   Up 16 hours             6123/tcp, 8081/tcp                                         apache_flink_and_docker_compose-taskmanager-2
+8ddbb18bef28   flink:1.20                   "/docker-entrypoint.…"   16 hours ago   Up 16 hours             6123/tcp, 0.0.0.0:8081->8081/tcp                           jobmanager
 ```
 
 To start adding some work to Flink you can access the Flink console using the following command and from there you can try out various jobs like creating tables.
