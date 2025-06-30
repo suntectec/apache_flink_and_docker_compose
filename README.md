@@ -1,4 +1,7 @@
 # Apache Flink containers using Docker Compose
+
+![Static Badge](https://img.shields.io/badge/Flink-suntectec-green?logo=apacheflink&logoColor=%23E6526F)
+
 Running Apache Flink containers using Docker Compose is a convenient way to get up and running to try out some Flink workloads.
 
 There is a post to go along with this project here [https://gordonmurray.com/data/2023/11/02/deploying-flink-cdc-jobs-with-docker-compose.html](https://gordonmurray.com/data/2023/11/02/deploying-flink-cdc-jobs-with-docker-compose.html)
